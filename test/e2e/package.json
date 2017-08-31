@@ -1,0 +1,27 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "description": "puppeteer examples",
+  "main": "index.js",
+  "author": "mkamakura",
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "date-fns": "^1.28.5",
+    "eater": "^3.2.0",
+    "gifencoder": "^1.1.0",
+    "lighthouse": "^2.4.0",
+    "mkdirp": "^0.5.1",
+    "npm-run-all": "^4.1.1",
+    "png-file-stream": "^1.0.0",
+    "puppeteer": "^0.10.1",
+    "wait-on": "^2.0.2"
+  },
+  "scripts": {
+    "test": "npm run screenshot",
+    "screenshot": "eater --dir test --ext .test.js --procs 1",
+    "ci": "run-p ci:start ci:wait-on -r --print-label",
+    "ci:start": "babel-node tools/runServer.js",
+    "ci:wait-on": "wait-on tcp:5000 && npm run screenshot"
+  }
+}
