@@ -18,10 +18,9 @@
     "wait-on": "^2.0.2"
   },
   "scripts": {
-    "test": "npm run screenshot",
-    "screenshot": "eater --dir test --ext .test.js --procs 1",
+    "test": "eater --dir test --ext .test.js --procs 1",
     "ci": "run-p ci:start ci:wait-on -r --print-label",
     "ci:start": "babel-node tools/runServer.js",
-    "ci:wait-on": "wait-on tcp:5000 && npm run screenshot"
+    "ci:wait-on": "wait-on tcp:5000 && npm run test"
   }
 }
